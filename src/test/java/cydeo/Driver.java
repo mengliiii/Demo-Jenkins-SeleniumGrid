@@ -29,16 +29,18 @@ public class Driver {
                 browser = ConfigurationReader.getProperty("browser");
             } else {
                 browser = System.getProperty("BROWSER");
+                //use command to setup system property with key "BROWSER"
+                //mvn test -Dcucumber.filter.tags=@smoke -DBROWSER=remote-chrome
             }
             System.out.println("Browser: " + browser);
             switch (browser) {
                 case "remote-chrome":
                     try {
                         // assign your grid server address
-                        String gridAddress = "34.201.52.112";
+                        String gridAddress = "44.197.132.236";  //your EC2 selenium server, public IP
                         URL url = new URL("http://" + gridAddress + ":4444/wd/hub");
                         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
-                        desiredCapabilities.setBrowserName("chrome");
+                        desiredCapabilities.setBrowserName("chrome");//this object can define browser type
                         driver = new RemoteWebDriver(url, desiredCapabilities);
                     } catch (Exception e) {
                         e.printStackTrace();
