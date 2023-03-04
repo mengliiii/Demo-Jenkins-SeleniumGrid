@@ -28,7 +28,7 @@ public class Driver {
             if (System.getProperty("BROWSER") == null) {
                 browser = ConfigurationReader.getProperty("browser");
             } else {
-                browser = System.getProperty("BROWSER");
+                browser = System.getProperty("BROWSER");//run at remote server
                 //use command to setup system property with key "BROWSER"
                 //mvn test -Dcucumber.filter.tags=@smoke -DBROWSER=remote-chrome
             }
@@ -46,7 +46,8 @@ public class Driver {
                         URL url = new URL("http://" + gridAddress + ":4444/wd/hub");//send all request to hub, and distribute test cases to nodes
                         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
                         desiredCapabilities.setBrowserName("chrome");//this object can define browser type
-                        driver = new RemoteWebDriver(url, desiredCapabilities);
+                        driver = new RemoteWebDriver(url, desiredCapabilities);//
+                        //remoteWebDriver is parent of browser drivers, and it accept url of grid hub and browser type
                     } catch (Exception e) {
                         e.printStackTrace();
                     }
