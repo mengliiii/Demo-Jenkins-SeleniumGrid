@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.cbt</groupId>
-    <artifactId>simple-cucumber-demo</artifactId>
+    <artifactId>demo-project-CICD-Grid</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>

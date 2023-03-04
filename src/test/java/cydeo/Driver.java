@@ -36,9 +36,14 @@ public class Driver {
             switch (browser) {
                 case "remote-chrome":
                     try {
-                        // assign your grid server address
-                        String gridAddress = "44.197.132.236";  //your EC2 selenium server, public IP
-                        URL url = new URL("http://" + gridAddress + ":4444/wd/hub");
+                        // assign your grid server address------------------------
+                        //1. connect you EC2 grid instance
+                        //2. docker-compose up -d (run your grid
+                        //3. link :4444 to check console has node
+                        //4. come Intellij here paste your grid link here
+                        String gridAddress = "44.192.104.16";  //your EC2 selenium server, public IP
+
+                        URL url = new URL("http://" + gridAddress + ":4444/wd/hub");//send all request to hub, and distribute test cases to nodes
                         DesiredCapabilities desiredCapabilities = new DesiredCapabilities();
                         desiredCapabilities.setBrowserName("chrome");//this object can define browser type
                         driver = new RemoteWebDriver(url, desiredCapabilities);
